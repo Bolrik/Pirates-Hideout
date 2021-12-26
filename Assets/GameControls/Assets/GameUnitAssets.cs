@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+﻿using Pirates;
 using UnityEngine;
 
-namespace Pirates
+namespace GameControls
 {
-    public class PirateManager : MonoBehaviour
+    public class GameUnitAssets : MonoBehaviour
     {
         #region Singleton Pattern		
-        static PirateManager Instance { get; set; }
+        static GameUnitAssets Instance { get; set; }
 
         private void Awake()
         {
@@ -21,10 +20,10 @@ namespace Pirates
             }
 
             Instance = this;
-            DontDestroyOnLoad(this.gameObject);
         }
         #endregion
 
-
+        [SerializeField] private GamePirate pirate;
+        public static GamePirate Pirate { get { return Instance.pirate; } }
     }
 }

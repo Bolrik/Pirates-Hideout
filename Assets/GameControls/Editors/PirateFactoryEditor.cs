@@ -6,19 +6,25 @@ using UnityEngine;
 
 namespace Pirates
 {
-    [CustomEditor(typeof(PirateManager))]
-    public class PirateManagerEditor : Editor
+    [CustomEditor(typeof(PirateFactory))]
+    public class PirateFactoryEditor : Editor
     {
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
 
+            GUILayout.Label("Create Pirates");
+
             if (!Application.isPlaying)
+            {
+                if (GUILayout.Button("*Inactive* - Generate Pirate"))
+                    Debug.LogWarning("Only available in Play-Mode.");
                 return;
+            }
 
             if (GUILayout.Button("Generate Pirate"))
             {
-                GameManager.PirateFactory.CreateRandom();
+
             }
         }
     }
